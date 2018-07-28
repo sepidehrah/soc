@@ -18,5 +18,5 @@ def login():
 @app.route("/main", methods = ["GET", "POST"])
 def search():
 	if request.method == "GET":
-		return render_template("search.html")
+		return render_template("main.html")
 	
