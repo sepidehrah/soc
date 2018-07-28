@@ -19,5 +19,4 @@ def login():
 def search():
 	if request.method == "GET":
 		return render_template("search.html")
-	# elif request.method == "POST":
-	# 	return 
+	
