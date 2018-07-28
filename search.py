@@ -19,4 +19,9 @@ def login():
 def search():
 	if request.method == "GET":
 		return render_template("main.html")
+	elif request.method == "POST":
+		# return get_information()
+		return "helo!"
 	
+# def get_information():
+# 	return "heeloo"
