@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)
 
@@ -20,8 +21,10 @@ def search():
 	if request.method == "GET":
 		return render_template("main.html")
 	elif request.method == "POST":
-		# return get_information()
-		return "helo!"
+		return get_information(request.form["search_word"])
 	
-# def get_information():
-# 	return "heeloo"
+def get_information(search_word):
+	req = requests.get("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=" + search_word)
+	page_id = list(req.json()['query']['pages'].keys())[0]
+	print('THIS IS PAGE ID', page_id)
+	return req.json()['query']['pages'][page_id]['extract']
